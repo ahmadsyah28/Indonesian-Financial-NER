@@ -90,17 +90,17 @@ Indonesian-Financial-NER/
 │   ├── result.png         # Grafik hasil evaluasi
 │   ├── streamlit-demo.png # Demo aplikasi Streamlit
 │   └── perbandingan.png   # Perbandingan model IndoBERT vs RoBERTa
-├── model/                 # Model yang sudah di-training
+├── model/                 # Model yang sudah di-training (⚠️ Download terpisah)
 │   ├── model_indobert/    # Model IndoBERT fine-tuned
 │   │   ├── config.json
-│   │   ├── model.safetensors (⚠️ Download terpisah)
+│   │   ├── model.safetensors
 │   │   ├── special_tokens_map.json
 │   │   ├── tokenizer_config.json
 │   │   ├── tokenizer.json
 │   │   └── vocab.txt
 │   └── model_roberta/     # Model RoBERTa untuk perbandingan
 │       ├── config.json
-│       ├── model.safetensors (⚠️ Download terpisah)
+│       ├── model.safetensors 
 │       ├── special_tokens_map.json
 │       ├── tokenizer_config.json
 │       ├── tokenizer.json
@@ -133,10 +133,10 @@ Indonesian-Financial-NER/
    model/
    ├── model_indobert/
    │   ├── model.safetensors  ← Copy file ini
-   │   └── ... (file lain sudah ada)
+   │   └── ... (file lain sudah ada) ← Copy file yang lain
    └── model_roberta/
        ├── model.safetensors  ← Copy file ini
-       └── ... (file lain sudah ada)
+       └── ... (file lain sudah ada) ← Copy file yang lain
    ```
 
 ## 🚀 Instalasi

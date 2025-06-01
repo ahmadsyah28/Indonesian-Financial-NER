@@ -1,0 +1,345 @@
+# ================================
+# VIRTUAL ENVIRONMENT
+# ================================
+ner_env/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ================================
+# PYTHON
+# ================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ================================
+# MACHINE LEARNING & NER MODEL FILES
+# ================================
+# Large model weight files (>100MB - GitHub limit)
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+
+# Training checkpoints
+checkpoints/
+saved_models/
+
+# Keep small config files for models
+!model/**/config.json
+!model/**/tokenizer_config.json
+!model/**/special_tokens_map.json
+!model/**/tokenizer.json
+!model/**/vocab.txt
+!model/**/vocab.json
+
+# Dataset files (usually too large)
+data/raw/
+data/processed/
+datasets/
+*.csv
+*.tsv
+
+# Keep small sample/demo data
+!data/sample/
+!data/demo/
+
+# Training logs
+logs/
+runs/
+tensorboard_logs/
+wandb/
+mlruns/
+
+# Cache files
+.cache/
+*.cache
+
+# Model outputs
+outputs/
+results/
+predictions/
+
+# ================================
+# JUPYTER & COLAB
+# ================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# ================================
+# IDE & EDITOR
+# ================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ================================
+# SYSTEM FILES
+# ================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+
+# ================================
+# STREAMLIT
+# ================================
+.streamlit/
+
+# ================================
+# TOKENS & SECRETS
+# ================================
+# API keys
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Secrets
+secrets.json
+config.secret.json
+*.key
+*.pem
+
+# Hugging Face tokens
+.huggingface/
+token.txt
+
+# ================================
+# TEMPORARY FILES
+# ================================
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Output files
+output/
+temp/
+tmp/
+
+# ================================
+# NLTK DATA
+# ================================
+# NLTK data yang sudah didownload (optional)
+nltk_data/
+
+# ================================
+# PROJECT SPECIFIC
+# ================================
+# Backup files
+*.backup
+backup/
+
+# Test files
+test_outputs/
+debug/
+experiments/
+sandbox/
+
+# Documentation build
+docs/build/
+
+# Large image files (keep small demo images)
+# Images/*.png  # Commented - keep for README
+# Images/*.jpg  # Commented - keep for README
+
+# ================================
+# PACKAGE MANAGERS
+# ================================
+# npm (if any frontend components)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ================================
+# LOG FILES
+# ================================
+*.log
+logs/
+
+# ================================
+# COVERAGE REPORTS
+# ================================
+htmlcov/
+.coverage

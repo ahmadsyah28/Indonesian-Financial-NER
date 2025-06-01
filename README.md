@@ -85,7 +85,7 @@ Dataset telah dianotasi secara manual menggunakan **BIO (Begin-Inside-Outside) t
 ## 📁 Struktur Proyek
 
 ```
-TESTING/
+Indonesian-Financial-NER/
 ├── Images/                 # Screenshots dan hasil visualisasi
 │   ├── result.png         # Grafik hasil evaluasi
 │   ├── streamlit-demo.png # Demo aplikasi Streamlit
@@ -93,14 +93,14 @@ TESTING/
 ├── model/                 # Model yang sudah di-training
 │   ├── model_indobert/    # Model IndoBERT fine-tuned
 │   │   ├── config.json
-│   │   ├── model.safetensors
+│   │   ├── model.safetensors (⚠️ Download terpisah)
 │   │   ├── special_tokens_map.json
 │   │   ├── tokenizer_config.json
 │   │   ├── tokenizer.json
 │   │   └── vocab.txt
 │   └── model_roberta/     # Model RoBERTa untuk perbandingan
 │       ├── config.json
-│       ├── model.safetensors
+│       ├── model.safetensors (⚠️ Download terpisah)
 │       ├── special_tokens_map.json
 │       ├── tokenizer_config.json
 │       ├── tokenizer.json
@@ -110,8 +110,34 @@ TESTING/
 ├── Ekstraksi_Entitas_Bisnis_dari_Artikel_Keuangan_Indonesia_Menggunakan_Fine_tuning_IndoBERT.ipynb
 ├── NER_Streamlit.ipynb   # Notebook untuk aplikasi Streamlit
 ├── requirements.txt      # Dependencies
+├── .gitignore            # File yang diabaikan Git
 └── README.md
 ```
+
+## 📥 Download Model Files
+
+**⚠️ PENTING**: File model weights (`model.safetensors`) terlalu besar untuk GitHub (>400MB). Download terpisah diperlukan.
+
+### 🔗 Link Download Model:
+📁 **Google Drive**: [Download Model Files](https://drive.google.com/drive/folders/16ru3GclLIjoW2n3il3dnGDMqf4ZlkFdW?usp=sharing)
+
+### 📋 File yang Perlu Didownload:
+- `model_indobert/model.safetensors` (472 MB)
+- `model_roberta/model.safetensors` (478 MB)
+
+### 🛠️ Cara Setup Model:
+1. **Clone repository** ini
+2. **Download file** dari Google Drive
+3. **Ekstrak/Copy** file ke struktur folder yang benar:
+   ```
+   model/
+   ├── model_indobert/
+   │   ├── model.safetensors  ← Copy file ini
+   │   └── ... (file lain sudah ada)
+   └── model_roberta/
+       ├── model.safetensors  ← Copy file ini
+       └── ... (file lain sudah ada)
+   ```
 
 ## 🚀 Instalasi
 
@@ -128,7 +154,17 @@ git clone https://github.com/ahmadsyah28/Indonesian-Financial-NER.git
 cd Indonesian-Financial-NER
 ```
 
-2. **Setup Virtual Environment**
+2. **Download Model Files**
+```bash
+# Download model files dari Google Drive:
+# https://drive.google.com/drive/folders/16ru3GclLIjoW2n3il3dnGDMqf4ZlkFdW?usp=sharing
+# 
+# Extract dan copy ke:
+# - model/model_indobert/model.safetensors
+# - model/model_roberta/model.safetensors
+```
+
+3. **Setup Virtual Environment**
 ```bash
 # Virtual environment sudah tersedia di folder ner_env
 # Untuk Windows:
@@ -138,7 +174,7 @@ ner_env\Scripts\activate
 source ner_env/bin/activate
 ```
 
-3. **Install Dependencies**
+4. **Install Dependencies**
 ```bash
 # Install library utama
 pip install tokenizers transformers streamlit nltk
@@ -150,11 +186,19 @@ pip install torch pandas numpy scikit-learn seqeval matplotlib seaborn
 pip install -r requirements.txt
 ```
 
-4. **Setup NLTK**
+5. **Setup NLTK**
 ```python
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
+```
+
+6. **Verifikasi Setup Model**
+```python
+# Test apakah model berhasil dimuat
+import os
+print("IndoBERT model:", os.path.exists("model/model_indobert/model.safetensors"))
+print("RoBERTa model:", os.path.exists("model/model_roberta/model.safetensors"))
 ```
 
 ## 📋 Dependencies
@@ -186,9 +230,13 @@ jupyter notebook "Ekstraksi_Entitas_Bisnis_dari_Artikel_Keuangan_Indonesia_Mengg
 # Aktivasi environment
 ner_env\Scripts\activate  # Windows
 
+# Pastikan model files sudah didownload dan ditempatkan dengan benar
+
 # Jalankan aplikasi
 streamlit run app.py
 ```
+
+**⚠️ Catatan**: Pastikan file `model.safetensors` sudah didownload dari Google Drive dan ditempatkan di folder yang benar sebelum menjalankan aplikasi.
 
 ### 3. Fitur BIO Tagging dalam Aplikasi
 - **Input artikel keuangan** Indonesia
@@ -225,14 +273,13 @@ text = "Bank Central Asia Tbk melaporkan laba sebesar Rp 31.4 triliun"
 
 ![Model Performance](Images/result.png)
 
-
 ### Perbandingan Model
 
 ![Model Comparison](Images/perbandingan.png)
 
 | Model | Precision | Recall | F1-Score |
-|-------|------------------|----------------|-----------------|
-| IndoBERT | 0.84 | 0.81 | 0.82|
+|-------|-----------|--------|----------|
+| IndoBERT | 0.84 | 0.81 | 0.82 |
 | IndoRoBERTa | 0.82 | 0.80 | 0.81 |
 
 ### Keunggulan BIO Tagging:
@@ -323,6 +370,25 @@ def merge_bio_entities(tokens, labels, confidences):
 - **API Development**: RESTful API untuk BIO NER
 - **Mobile Integration**: BIO NER untuk mobile applications
 
+## 🚨 Troubleshooting
+
+### Model Loading Issues:
+```bash
+# Jika error "model not found", pastikan:
+1. File model.safetensors sudah didownload dari Google Drive
+2. File ditempatkan di path yang benar:
+   - model/model_indobert/model.safetensors
+   - model/model_roberta/model.safetensors
+3. File tidak corrupt (cek size: IndoBERT ~472MB, RoBERTa ~478MB)
+```
+
+### Environment Issues:
+```bash
+# Jika error dependencies:
+pip install --upgrade transformers tokenizers
+pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+```
+
 ## 🤝 Kontribusi
 
 Kontribusi untuk pengembangan BIO tagging sangat diterima!
@@ -342,10 +408,21 @@ Proyek ini dilisensikan under **MIT License**. Lihat file `LICENSE` untuk detail
 - **Ahmad Syah Ramadhan** - BIO Algorithm & Model Training - NPM: 2208107010033
 - **Widya Nurul Sukma** - BIO Annotation & Data Preprocessing - NPM: 2208107010054
 
+## 📞 Kontak
 
+Untuk pertanyaan tentang BIO tagging implementation atau model setup:
+
+- **Email**: ahmadsyah.ramadhan@student.university.edu
+- **GitHub Issues**: [Issues Repository](https://github.com/ahmadsyah28/Indonesian-Financial-NER/issues)
+- **Model Download**: [Google Drive](https://drive.google.com/drive/folders/16ru3GclLIjoW2n3il3dnGDMqf4ZlkFdW?usp=sharing)
 
 ---
 
-**📝 Catatan**: Proyek ini menggunakan **BIO (Begin-Inside-Outside) Tagging Scheme** untuk menangani entitas multi-token dengan akurasi tinggi. Semua code dan dokumentasi tersedia untuk pembelajaran dan penelitian lebih lanjut.
+**📝 Catatan Penting**: 
+- Proyek ini menggunakan **BIO (Begin-Inside-Outside) Tagging Scheme** untuk menangani entitas multi-token dengan akurasi tinggi
+- **Model files** harus didownload terpisah dari [Google Drive](https://drive.google.com/drive/folders/16ru3GclLIjoW2n3il3dnGDMqf4ZlkFdW?usp=sharing) karena ukuran file >100MB
+- Semua code dan dokumentasi tersedia untuk pembelajaran dan penelitian lebih lanjut
 
 **⭐ Jika proyek BIO tagging ini bermanfaat, jangan lupa berikan star di GitHub!**
+
+**🎓 Proyek Tugas Akhir - Mata Kuliah Natural Language Processing**
